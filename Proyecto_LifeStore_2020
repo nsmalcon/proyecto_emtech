@@ -1533,9 +1533,11 @@ if preg1 == "1":
     print("Usuario y/o contraseña incorrectos")
   #si todo coincide y además el usuario se encuentra en la lista de permisos
   #se da acceso al menú de consulta
+  interacciones=["1","2","3","4","5","6","7","8","9","10","11","12"]
+for x_veces in interacciones:
   if continuar == 1 and usuario in permiso_acceder:
     #este es el menú de consulta, del cual se puede consultar entre 13 opciones diferentes
-    print("¡Hola"+usuario+"bienvenido a LifeStore!""\n"
+    print("¡Hola "+ usuario + " bienvenido a LifeStore!""\n"
     "(1) Total de ingresos""\n"
     "(2) Productos vendidos (cantidad por cada producto)""\n"
     "(3) Productos más vendidos""\n"
@@ -1556,10 +1558,12 @@ if preg1 == "1":
         for ventas in lifestore_sales:
           if productos[0] == ventas[1]:
             ingreso += productos[2]
-      print("\n""El ingreso total fue de: $",ingreso)
+      print("\n""INGRESO TOTAL""\n")
+      print("\n""El ingreso total fue de: $",ingreso,"\n")
     #si el usuario quiere consultar el registro de venta de cada uno de los productos
     if consulta == "2":
       for total in lista_prod_mas_vend:
+        print("\n""REGISTRO DE PRODUCTOS VENDIDOS""\n")
         print("El producto:", total[2], "se vendió: ", total[0], "veces""\n")
     #si el usuario quiere consultar los productos más vendidos (sólo se muestran 25)
     if consulta == "3":
@@ -1568,6 +1572,7 @@ if preg1 == "1":
       for m in lista_prod_mas_vend:
         x += 1
         if x <= 25:
+          print("\n""PRODUCTOS MÁS VENDIDOS""\n")
           print("El producto",m[1],":",m[2],"se vendió: ",m[0],"\n")
     #si el usuario quiere consultar los productos menos vendidos (sólo se muestran 25)
     if consulta == "4":
@@ -1577,10 +1582,12 @@ if preg1 == "1":
         if m[0] != 0:
           x += 1
           if x <= 25:
+            print("\n""PRODUCTOS MENOS VENDIDOS""\n")
             print("El producto",m[1],":",m[2],"se vendió: ",m[0],"\n")
     #si el usuario quiere consultar los productos que no se vendieron
     if consulta == "5":
       for total in lista_prod_no_vend:
+        print("\n""PRODUCTOS QUE NO SE VENDIERON""\n")
         print("El producto ", total[1], "no se vendió.")
     #si el usuario quiere consultar los productos más buscados (sólo se muestran 30)
     if consulta == "6":
@@ -1589,6 +1596,7 @@ if preg1 == "1":
       for m in lista_buscados:
         x += 1
         if x <= 30:
+          print("\n""PRODUCTOS MÁS BUSCADOS""\n")
           print("El producto",m[1],":",m[2],"se buscó: ",m[0],"veces.""\n")
     #si el usuario quiere consultar los productos menos buscados (sólo se muestran 30)
     if consulta == "7":
@@ -1598,16 +1606,19 @@ if preg1 == "1":
         if m[0] != 0:
           x += 1
           if x <= 30:
+            print("\n""PRODUCTOS MENOS BUSCADOS""\n")
             print("El producto",m[1],":",m[2],"se buscó: ",m[0],"veces.""\n")
     #si el usuario quiere consultar los productos que no fueron consultados
     if consulta == "8":
       for total in lista_prod_no_buscados:
+        print("\n""PRODUCTOS NO BUSCADOS""\n")
         print("El producto", total[1], "no fue buscado.")
     #si el usuario quiere consultar los meses donde se presentó el mayor
     #número de ventas
     if consulta == "9":
       x = 0 
       mes_form.sort(reverse = True)
+      print("\n""MESES CON MAYOR NÚMERO DE VENTAS""\n")
       print("Los tres meses que presentaron un mayor número de ventas fueron: ")
       for m in range(0,len(mes_form)):
         if m <= 2:
@@ -1617,6 +1628,7 @@ if preg1 == "1":
     if consulta == "10":
       x = 0 
       mes_form.sort()
+      print("\n""MESES CON MENOR NÚMERO DE VENTAS""\n")
       print("Los tres meses que presentaron un menor número de ventas fueron: ")
       for m in range(0,len(mes_form)):
         if m <= 5:
@@ -1625,6 +1637,7 @@ if preg1 == "1":
     if consulta == "11":
       x = 0 
       mes_form.sort()
+      print("\n""MESES SIN REGISTRO DE VENTAS""\n")
       print("Los meses que no presentaron ventas fueron: ")
       for m in range(0,len(mes_form)):
         if mes_form[m][0] == 0:
@@ -1633,10 +1646,14 @@ if preg1 == "1":
     if consulta == "12":
       vtas_totales = len(lifestore_sales)
       prom_mes = vtas_totales/12
+      print("\n""PROMEDIO DE VENTAS POR MES""\n")
       print("El promedio de ventas mensuales es de: ",int(prom_mes))
+if x_veces == "12":
+  print("\n""Ya superaste el número máximo de consultas""\n"
+  "¡Hasta pronto!")
 #Registro de nuevos usuarios, todos los nuevos usuarios se añaden a la lista de
 #usuarios pero no tienen acceso a más información
-if preg1  == "2": 
+if preg1  == "2":
   nvo_reg = []
   nvo_usua = nvo_reg.append(input("Ingrese un usuario: "))
   nva_contra = nvo_reg.append(input("Ingrese una contraseña: "))
